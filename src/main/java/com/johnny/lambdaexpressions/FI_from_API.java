@@ -25,6 +25,12 @@ public class FI_from_API {
         BiPredicate<String , Integer> checkLength = (str, len) -> str.length() == len;
         System.out.println(checkLength.test("Vatican City", 8));
         System.out.println(checkLength.test("Vatican City", 12));
+
+        Predicate<Integer> olderThan25 = i -> i > 25;
+        Predicate<Integer> olderThan35 = i -> i > 35;
+        Person jekk = new Person();
+        System.out.println("is Jekk older than 25? " + olderThan25.test(jekk.getAge()));
+        System.out.println("is Jekk older than 35? " + olderThan35.test(jekk.getAge()));
     }
 
     public void supplier(){
@@ -45,8 +51,12 @@ public class FI_from_API {
 
     class Person{
         private String name = "Jekk Baerr";
+        private int age = 30;
         public String getName(){
             return name;
+        }
+        public int getAge(){
+            return age;
         }
     }
 
