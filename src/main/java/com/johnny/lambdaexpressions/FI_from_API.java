@@ -1,9 +1,7 @@
 package com.johnny.lambdaexpressions;
 
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 import java.util.function.*;
 
 public class FI_from_API {
@@ -12,6 +10,7 @@ public class FI_from_API {
         fiApi.predicate();
         fiApi.supplier();
         fiApi.consumer();
+        fiApi.function();
     }
 
     public void predicate(){
@@ -25,12 +24,6 @@ public class FI_from_API {
         BiPredicate<String , Integer> checkLength = (str, len) -> str.length() == len;
         System.out.println(checkLength.test("Vatican City", 8));
         System.out.println(checkLength.test("Vatican City", 12));
-
-        Predicate<Integer> olderThan25 = i -> i > 25;
-        Predicate<Integer> olderThan35 = i -> i > 35;
-        Person jekk = new Person();
-        System.out.println("is Jekk older than 25? " + olderThan25.test(jekk.getAge()));
-        System.out.println("is Jekk older than 35? " + olderThan35.test(jekk.getAge()));
     }
 
     public void supplier(){
@@ -44,20 +37,6 @@ public class FI_from_API {
 
         Supplier<Double> sRandom = () -> Math.random();
         System.out.println(sRandom.get());
-
-        Supplier<Person> supPerson = Person::new;
-        System.out.println(supPerson.get().getName());
-    }
-
-    class Person{
-        private String name = "Jekk Baerr";
-        private int age = 30;
-        public String getName(){
-            return name;
-        }
-        public int getAge(){
-            return age;
-        }
     }
 
     public void consumer(){
@@ -84,5 +63,20 @@ public class FI_from_API {
         BiConsumer<String, String> mapPrint =
                 (key, value) -> System.out.println(key + " is the capital of: " + value);
         mapCapitalCities.forEach(mapPrint);
+    }
+
+    public void function(){
+        // Function<T, R> is a functional interface which contains one
+        // abstract method - R apply(T t)
+        Function<String, Integer> fn2 = s -> s.length();
+        System.out.println("Function: " + fn2.apply("Moscow"));
+
+        // BiFunction<T, U, R> is a functional interface which contains
+        // an abstract method - R apply<T t, U u>
+        BiFunction<String, String, Integer> biFn = (s1, s2) -> s1.length() + s2.length();
+        System.out.println("BiFunction: " + biFn.apply("William", "Shakespeare"));
+
+        BiFunction<String, String, String> biFn2 = (s1, s2) -> s1.concat(s2);
+        System.out.println("BiFunction: " + biFn2.apply("William ", "Shakespeare"));
     }
 }
