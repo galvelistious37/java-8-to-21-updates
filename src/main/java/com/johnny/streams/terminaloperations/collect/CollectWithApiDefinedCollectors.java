@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -12,6 +13,7 @@ public class CollectWithApiDefinedCollectors {
         collectorsJoiningAndAveragine();
         collectorsToMap();
         collectorsGroupingBy();
+        collectorPartitioningBy();
     }
 
     private static void collectorsJoiningAndAveragine() {
@@ -88,4 +90,35 @@ public class CollectWithApiDefinedCollectors {
         System.out.println(map3);
         System.out.println(map3.getClass());
     }
+
+    private static void collectorPartitioningBy(){
+        // Partitioning is a special case of grouping where there are only
+        // two possible groups - true and false. The keys will be the booleans
+        // true and false.
+        Predicate<String> startsWithT = s -> s.startsWith("T");
+        Stream<String> names = Stream.of("Thomas", "Teresa", "Mike", "Alan", "Peter");
+        Map<Boolean, List<String>> map = names.collect(
+                // pass in a Predicate
+                Collectors.partitioningBy(startsWithT));
+        System.out.println(map);
+
+        Stream<String> names2 = Stream.of("Thomas", "Teresa", "Mike", "Alan", "Peter");
+        Predicate<String> sGtFour = s -> s.length() > 4;
+        Map<Boolean, List<String>> map2 = names2.collect(
+                Collectors.partitioningBy(sGtFour));
+        System.out.println(map2);
+
+        Stream<String> names3 = Stream.of("Thomas", "Teresa", "Mike", "Alan", "Peter");
+        Predicate<String> sGtTen = s -> s.length() > 10;
+        Map<Boolean, List<String>> map3 = names3.collect(
+                Collectors.partitioningBy(sGtTen));
+        System.out.println(map3);
+
+        Stream<String> names4 = Stream.of("Alan", "Thomas", "Teresa", "Mike", "Alan", "Peter");
+        Map<Boolean, Set<String>> map4 = names4.collect(
+                Collectors.partitioningBy(sGtFour, Collectors.toSet()));
+        System.out.println(map4);
+
+    }
+
 }
