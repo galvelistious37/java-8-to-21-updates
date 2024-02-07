@@ -1,6 +1,9 @@
 package com.johnny.streams.intermediateoperations;
 
 import java.util.Arrays;
+import java.util.IntSummaryStatistics;
+import java.util.OptionalDouble;
+import java.util.OptionalInt;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
@@ -14,8 +17,15 @@ public class PrimitiveStreams {
     //    DoubleStream
     //    LongStream
     public static void main(String[] args) {
+        System.out.println("Primitive Streams");
         primitiveStreams();
+        System.out.println("Reduce");
         primitiveReduce();
+        System.out.println("Optional");
+        primitiveOptional();
+        System.out.println("Stats");
+        primitiveStatistics(IntStream.of(5, 10, 15, 20));
+        primitiveStatistics(IntStream.empty());
     }
 
     private static void primitiveStreams(){
@@ -50,5 +60,33 @@ public class PrimitiveStreams {
                 .mapToInt(n -> n); // unboxing from Integer to int
         int total = intS.sum();
         System.out.println(total);
+    }
+
+    private static void primitiveOptional(){
+        OptionalInt max = IntStream.of(10, 20, 30).max();
+        max.ifPresent(System.out::println);
+
+        OptionalDouble min = DoubleStream.of(10.0, 20.0, 30.0).min();
+//        OptionalDouble min = DoubleStream.of().min();
+        // NoSuchElementException is thrown if no value is present
+        System.out.println(min.orElseThrow());
+
+        OptionalDouble average = LongStream.of(10L, 20L, 30L).average();
+//        OptionalDouble average = LongStream.of().average();
+        System.out.println(average.orElseGet(Math::random));
+    }
+
+    private static void primitiveStatistics(IntStream numbers){
+        IntSummaryStatistics intStats = numbers.summaryStatistics();
+        int min = intStats.getMin();  // largest int value if nothing in stream
+        System.out.println(min);
+        int max = intStats.getMax(); // smallest int value if nothing in stream
+        System.out.println(max);
+        double avg = intStats.getAverage();
+        System.out.println(avg);
+        long count = intStats.getCount();
+        System.out.println(count);
+        long sum = intStats.getSum();
+        System.out.println(sum);
     }
 }
