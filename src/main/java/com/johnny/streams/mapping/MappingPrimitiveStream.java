@@ -1,4 +1,4 @@
-package com.johnny.streams.intermediateoperations;
+package com.johnny.streams.mapping;
 
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
