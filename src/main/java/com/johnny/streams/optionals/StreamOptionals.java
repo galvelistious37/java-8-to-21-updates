@@ -1,4 +1,4 @@
-package com.johnny.streams.intermediateoperations;
+package com.johnny.streams.optionals;
 
 import java.util.Optional;
 import java.util.OptionalDouble;

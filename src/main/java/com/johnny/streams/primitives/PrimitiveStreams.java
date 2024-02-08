@@ -1,4 +1,4 @@
-package com.johnny.streams.intermediateoperations;
+package com.johnny.streams.primitives;
 
 import java.util.Arrays;
 import java.util.IntSummaryStatistics;
