@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 public class Main {
     public static void main(String[] args) {
         questionOne();
-        questionTwo(getItemList());
+        questionTwo();
         questionTwoAlternate();
         questionThree();
         questionFour();
@@ -25,17 +25,15 @@ public class Main {
         System.out.println("Average: " + d);
     }
 
-    private static void questionTwo(List<Item> itemList){
-        itemList.stream()
+    private static void questionTwo(){
+        List<Item> listPeople = List.of(new Item(1, "Screw"),
+                new Item(2, "Nail"),
+                new Item(3, "Bolt"));
+
+        listPeople.stream()
                 .sorted(Comparator.comparing(Item::getName))
                 .forEach(System.out::print);
         System.out.println();
-    }
-
-    private static List<Item> getItemList(){
-        return List.of(new Item(1, "Screw"),
-                new Item(2, "Nail"),
-                new Item(3, "Bolt"));
     }
 
     private static void questionTwoAlternate(){
