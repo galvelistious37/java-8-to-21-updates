@@ -2,7 +2,7 @@ package com.johnny.collectionsandgenerics.collections;
 
 import java.util.*;
 
-public class CommonCollections {
+public class Lists {
     public static void main(String[] args) {
         collection();
         listsFactoryMethods();
