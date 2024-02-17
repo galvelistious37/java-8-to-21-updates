@@ -1,4 +1,4 @@
-package com.johnny.collectionsandgenerics.collections;
+package com.johnny.collectionsandgenerics.collections.types;
 
 import java.util.*;
 
