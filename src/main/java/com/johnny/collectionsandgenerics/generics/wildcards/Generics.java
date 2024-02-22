@@ -1,4 +1,4 @@
-package com.johnny.collectionsandgenerics.generics;
+package com.johnny.collectionsandgenerics.generics.wildcards;
 
 import java.util.ArrayList;
 import java.util.List;
