@@ -70,21 +70,21 @@ public class LambdasLab {
     }
 
     private void sortAge(List<Person> people){
-        people.sort(Comparator.comparing(p -> p.getAge()));
+        people.sort(Comparator.comparing(Person::getAge));
         System.out.println("Sorted by age:");
-        people.forEach(p -> System.out.println(p));
+        people.forEach(System.out::println);
     }
 
     private void sortName(List<Person> people){
-        people.sort(Comparator.comparing(p -> p.getName()));
+        people.sort(Comparator.comparing(Person::getName));
         System.out.println("Sorted by name:");
-        people.forEach(p -> System.out.println(p));
+        people.forEach(System.out::println);
     }
 
     private void sortHeight(List<Person> people){
-        people.sort(Comparator.comparing(p -> p.getHeight()));
+        people.sort(Comparator.comparing(Person::getHeight));
         System.out.println("Sorted by height:");
-        people.forEach(p -> System.out.println(p));
+        people.forEach(System.out::println);
     }
 
     private <T> boolean check(T t, Predicate<T> pred){
