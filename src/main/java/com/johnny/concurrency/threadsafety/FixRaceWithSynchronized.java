@@ -28,7 +28,7 @@ public class FixRaceWithSynchronized {
         // When synch on 'this' make sure all threads use the same isntance.
          FixRaceWithSynchronized instance = new FixRaceWithSynchronized();
         for(int i = 1; i <= 10; i++){
-            new Thread(() -> instance.addToCounter()).start();
+            new Thread(instance::addToCounter).start();
 //            new Thread(() -> addToCounter()).start();
         }
     }
