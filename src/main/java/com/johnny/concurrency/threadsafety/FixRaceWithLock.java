@@ -21,7 +21,7 @@ public class FixRaceWithLock {
             }
         } else {
             // Did not get the lock... do something else
-            System.out.println("Failed to get lock...");
+            System.out.println("Failed to get lock... Thread Id: " + Thread.currentThread().getId());
         }
     }
 
