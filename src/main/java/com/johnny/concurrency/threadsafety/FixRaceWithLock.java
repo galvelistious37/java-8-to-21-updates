@@ -9,7 +9,7 @@ public class FixRaceWithLock {
     private static Lock lock = new ReentrantLock();
 
     public static void addToCounter(){
-        if(lock.tryLock()){
+        if(lock.tryLock()){ // If thread cannot get the lock it can move on to something else
             try{
 //                lock.lock(); // blocking call
                 int c = count;
@@ -21,7 +21,7 @@ public class FixRaceWithLock {
             }
         } else {
             // Did not get the lock... do something else
-            System.out.println("Failed to get lock...");
+            System.out.println("Failed to get lock... Thread Id: " + Thread.currentThread().getId());
         }
     }
 
