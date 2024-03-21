@@ -1,4 +1,4 @@
-package com.johnny.annotations;
+package com.johnny.annotations.commonbuiltin;
 
 
 @FunctionalInterface

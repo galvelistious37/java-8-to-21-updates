@@ -1,4 +1,4 @@
-package com.johnny.annotations;
+package com.johnny.annotations.commonbuiltin;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,7 +21,7 @@ public class CommonBuiltInAnnotationsExtra {
         var ann = new CommonBuiltInAnnotationsExtra();
         ann.testDeprecated();
         ann.testUnchecked();
-        abuseVarargs(new ArrayList<>());
+//        abuseVarargs(new ArrayList<>());
     }
 
     @SuppressWarnings("deprecation")
