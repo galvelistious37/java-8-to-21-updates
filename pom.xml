@@ -9,13 +9,6 @@
 
   <name>java-8-to-21-updates</name>
   <url>http://maven.apache.org</url>
-  <modules>
-    <module>farm.stock.count</module>
-    <module>farm.stock.sale</module>
-  </modules>
-  <!--    <modules>-->
-<!--        <module>farm.count.stock</module>-->
-<!--    </modules>-->
 
     <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
