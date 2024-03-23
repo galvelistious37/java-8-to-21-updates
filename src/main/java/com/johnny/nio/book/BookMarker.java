@@ -1,6 +1,5 @@
 package com.johnny.nio.book;
 
-import java.awt.*;
 import java.io.Serializable;
 
 public class BookMarker implements Serializable {
